@@ -96,7 +96,7 @@ from (
 select count(*)
 from involved i 
   join movie_genre mg on i.movieid = mg.movieid
-where mg.genre in (select genre from genre where category = 'Newsworthy')
+where mg.genre in (select genre from genre where category = 'Lame')
 group by i.personid
-  having count(distinct mg.genre) = (select count(*) from genre where category = 'Newsworthy')
+  having count(distinct mg.genre) = (select count(*) from genre where category = 'Lame')
 ) tmp;
