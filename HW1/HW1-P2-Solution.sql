@@ -1,3 +1,7 @@
+/*
+Copyright Peter Konnerup Moss, Sep. 2019
+*/
+
 -- Part 2
 /*
 
