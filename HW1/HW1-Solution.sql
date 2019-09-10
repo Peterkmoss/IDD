@@ -11,7 +11,7 @@ Sports(id, name, record)
 */
 
 -- 1
-/*
+
 \echo 'Ex. 1';
 select count(distinct R.peopleid)
 from results R
@@ -121,7 +121,7 @@ from sports S
 where R.result is not null
 group by S.id, S.name, S.record
   having count(distinct C.place) = (select count(distinct place) from competitions);
-*/
+
 -- Part 2
 /*
 
@@ -218,7 +218,7 @@ from person p
   join involved i on p.id = i.personid
   join movie_genre mg on i.movieid = mg.movieid
   join genre g on mg.genre = g.genre
-where g.genre in (select genre from genre where category = 'Newsworthy')
+where g.genre in (select genre from genre where category = 'Lame')
 group by p.id
-  having count(distinct g.genre) = (select count(*) from genre where category = 'Newsworthy')
+  having count(distinct g.genre) = (select count(*) from genre where category = 'Lame')
 ) tmp;
