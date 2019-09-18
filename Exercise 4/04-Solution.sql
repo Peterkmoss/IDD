@@ -112,6 +112,19 @@ LANGUAGE plpgsql;
 */
 
 -- Ex 5
+/*
+drop view if exists DebtorStatus;
+
+create view DebtorStatus
+as
+select p.pid, pName, sum(abalance) as totalbalance, sum(aover) as totaloverdraft
+from people p
+    join accounts a on a.pid = p.pid
+group by p.pid
+having sum(abalance) < 0;
+*/
+
+-- Ex 6
 
 
 -- TESTS --
@@ -198,6 +211,7 @@ and bDueDate > CURRENT_DATE;
 
 */
 -- ---------------------------------------------------------------------
+/*
 select '3. Trigger on AccountRecords' as now_testing;
 
 select 'Creating a function to find bogus accounts' as message;
@@ -288,8 +302,10 @@ from FindBogusAccounts() A left outer join AccountRecords R on A.AID = R.AID
 where A.AID <> 90;
 
 rollback; 
-/*
+*/
+
 -- ---------------------------------------------------------------------
+/*
 select '4. Function Transfer' as now_testing;
 
 begin transaction;
@@ -329,8 +345,9 @@ select 'Transfer from 2 to 200000 should NOT work' as result;
 select Transfer ( 2, 200000, 1 );
 
 rollback; 
-
+*/
 -- ---------------------------------------------------------------------
+/*
 select '5. View DebtorStatus' as now_checking;
 
 select 'Should return 28 debtors' as result;
@@ -343,8 +360,9 @@ select 'Two women owe more than 10K' as result;
 select *
 from DebtorStatus
 where totalbalance < -10000;
-
+*/
 -- ---------------------------------------------------------------------
+
 select '6. Trigger on Persons' as now_testing;
 
 begin transaction;
@@ -368,7 +386,7 @@ from AccountRecords R
 where R.AID = (select max (A1.AID) from Accounts A1);
 
 rollback; 
-
+/*
 -- ---------------------------------------------------------------------
 select '7. Function InsertPerson' as now_testing;
 
