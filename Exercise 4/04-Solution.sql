@@ -6,6 +6,7 @@ bills(bid, pid, bduedate, bamount, bispaid)
 people(pid, pname, pgender, pheight)
 
 */
+
 -- Setup --
     drop function if exists BanChanges() cascade;
 
@@ -19,6 +20,7 @@ people(pid, pname, pgender, pheight)
 -- End Setup --
 
 -- Ex 1
+/*
     DROP VIEW IF EXISTS AllAccountRecords;
 
     create view AllAccountRecords
@@ -27,7 +29,7 @@ people(pid, pname, pgender, pheight)
         ar.rid, ar.rdate, ar.rtype, ar.ramount, ar.rbalance
     from accounts a
         left join accountrecords ar on a.aid = ar.aid;
-
+*/
 
 -- Ex 2
 /*
@@ -59,15 +61,15 @@ people(pid, pname, pgender, pheight)
 
 -- Ex 3
 /*
-    DROP TRIGGER IF EXISTS Ex3 on AccountRecords;
-    DROP FUNCTION IF EXISTS Ex3();
+    DROP TRIGGER IF EXISTS NewRecord on AccountRecords;
+    DROP FUNCTION IF EXISTS NewRecord();
 
     CREATE TRIGGER BanUpdate
     before update or delete
     on AccountRecords
     for each row execute procedure BanChanges();
 
-    CREATE FUNCTION Ex3()
+    CREATE FUNCTION NewRecord()
     RETURNS TRIGGER
     AS $$ 
     DECLARE
@@ -91,10 +93,10 @@ people(pid, pname, pgender, pheight)
     END; $$ 
     LANGUAGE plpgsql;
 
-    CREATE TRIGGER Ex3
+    CREATE TRIGGER NewRecord
     BEFORE INSERT
     ON AccountRecords
-    for each row execute PROCEDURE Ex3();
+    for each row execute PROCEDURE NewRecord();
 */
 
 -- Ex 4
@@ -211,10 +213,64 @@ people(pid, pname, pgender, pheight)
 */
 
 -- Ex 9
+/*
+    drop function if exists LoanMoney(iaid int, iamount int, iduedate date);
 
+    create function LoanMoney(iaid int, iamount int, iduedate date)
+    returns void
+    as $$
+    declare
+        person int;
+    begin
+        if iamount <= 0 then
+            raise exception 'LoanMoney: Amount must be positive!';
+        end if;
+
+        if iduedate <= CURRENT_DATE then
+            raise exception 'LoanMoney: Due date must be in the future!';
+        end if;
+
+        insert into accountrecords(aid, rtype, ramount) values (iaid, 'L', iamount);
+
+        select pid into person
+        from accounts
+        where aid = iaid;
+
+        insert into bills(pid, bduedate, bamount, bispaid) values (person, iduedate, iamount, 'F');
+        return;
+    end; $$
+    language plpgsql;
+*/
 
 -- Ex 10
+/*
+    drop view if exists FinancialStatus;
+    drop view if exists TotalBalance;
+    drop view if exists CountBills;
 
+    create view TotalBalance
+    as 
+    select pid, sum(abalance) as balance
+    from accounts
+    group by pid;
+
+    create view CountBills
+    as
+    select pid, count(bid) as unpaid
+    from bills
+    where bispaid = FALSE
+    group by pid;
+
+    create view FinancialStatus
+    as
+    select distinct a.pid, pname, balance, case
+                                            when unpaid > 0 then unpaid
+                                            else '0' end as "unpaid"
+    from accounts a
+        join people p on p.pid = a.pid
+        join TotalBalance tb on tb.pid = a.pid
+        left join CountBills cb on cb.pid = a.pid;
+*/
 
 -- TESTS --
 --1----------------------------------------------------------------------
@@ -509,7 +565,7 @@ people(pid, pname, pgender, pheight)
 */
 
 --8---------------------------------------------------------------------
-
+/*
     select '8. Function PayOneBill' as now_testing;
 
     begin transaction;
@@ -591,7 +647,7 @@ people(pid, pname, pgender, pheight)
     select PayOneBill (107);
 
     rollback; 
-
+*/
 
 --9---------------------------------------------------------------------
 /*
@@ -645,5 +701,4 @@ people(pid, pname, pgender, pheight)
     select *
     from FinancialStatus
     where PID = 78;
-
 */
