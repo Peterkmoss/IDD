@@ -7,12 +7,7 @@ people(pid, pname, pgender, pheight)
 
 */
 -- Setup --
-    drop trigger if exists BanChanges on accountrecords;
-    drop trigger if exists BanChanges on accounts;
-    drop trigger if exists BanChanges on bills;
-    drop trigger if exists BanChanges on people;
-    
-    drop function if exists BanChanges();
+    drop function if exists BanChanges() cascade;
 
     CREATE function BanChanges()
     returns trigger
@@ -24,7 +19,6 @@ people(pid, pname, pgender, pheight)
 -- End Setup --
 
 -- Ex 1
-/*
     DROP VIEW IF EXISTS AllAccountRecords;
 
     create view AllAccountRecords
@@ -33,7 +27,7 @@ people(pid, pname, pgender, pheight)
         ar.rid, ar.rdate, ar.rtype, ar.ramount, ar.rbalance
     from accounts a
         left join accountrecords ar on a.aid = ar.aid;
-*/
+
 
 -- Ex 2
 /*
@@ -79,7 +73,7 @@ people(pid, pname, pgender, pheight)
     DECLARE
         newBalance FLOAT;
     BEGIN
-        if (new.ramount < 0 and -new.ramount >= (select abalance - aover from accounts a where a.aid = new.aid)) THEN
+        if (new.ramount < 0 and -new.ramount >= (select abalance + aover from accounts a where a.aid = new.aid)) THEN
             raise exception 'Ex3: Not enough money!';
         else
             select (a.abalance + new.rAmount) into newBalance
@@ -103,15 +97,19 @@ people(pid, pname, pgender, pheight)
     for each row execute PROCEDURE Ex3();
 */
 
--- Ex 4 - HVAD FUCK MENER DE?
+-- Ex 4
 /*
-    create function Ex4(iToAID int, iFromAID int, iAmount int)
+    drop function if exists Transfer(iToAID int, iFromAID int, iAmount int);
+
+    create function Transfer(iToAID int, iFromAID int, iAmount int)
     returns void
-    as $$
+    as 
+    $$
     begin
+        insert into accountrecords(aid, rtype, ramount) values (iFromAID, 'T', -iAmount);
+        insert into accountrecords(aid, rtype, ramount) values (iToAID, 'T', iAmount);
         return;
-    end; $$
-    LANGUAGE plpgsql;
+    end; $$ LANGUAGE plpgsql;
 */
 
 -- Ex 5
@@ -168,6 +166,55 @@ people(pid, pname, pgender, pheight)
         return;
     end; $$ language plpgsql;
 */
+
+-- Ex 8
+/*
+    drop function if exists PayOneBill(ibid int);
+
+    create function PayOneBill(ibid int)
+    returns void
+    as $$
+    declare
+        amount int;
+        account int;
+    begin
+        if (select bispaid from bills where bid = ibid) = TRUE then
+            raise exception 'PayOneBill: Bill is already paid!';
+        end if;
+
+        if (select bid from bills where bid = ibid) is null then
+            raise exception 'PayOneBill: Bill does not exist!';
+        end if;
+
+        if (select count(a.aid) from bills b join accounts a on a.pid = b.pid where bid = ibid) = 0 then
+            raise exception 'PayOneBill: Account does not exist!';
+        end if;
+
+        select bamount into amount
+        from bills
+        where bid = ibid;
+
+        select aid into account
+        from accounts a
+            join bills b on a.pid = b.pid
+        where bid = ibid
+        order by abalance;
+
+        insert into accountrecords(aid, rtype, ramount) values (account, 'B', -amount);
+
+        update bills
+        set bispaid = TRUE
+        where bid = ibid;
+
+        return;
+    end; $$ language plpgsql;
+*/
+
+-- Ex 9
+
+
+-- Ex 10
+
 
 -- TESTS --
 --1----------------------------------------------------------------------
@@ -462,7 +509,7 @@ people(pid, pname, pgender, pheight)
 */
 
 --8---------------------------------------------------------------------
-/*
+
     select '8. Function PayOneBill' as now_testing;
 
     begin transaction;
@@ -544,7 +591,7 @@ people(pid, pname, pgender, pheight)
     select PayOneBill (107);
 
     rollback; 
-*/
+
 
 --9---------------------------------------------------------------------
 /*
