@@ -1,0 +1,8 @@
+Animal(id, weight)
+Fox(id, color)
+Dog(id, breed, name)
+Bird(id, wingspan)
+Hunter(id)
+Owns(hunterId, dogId)
+BirdKills(birdId, hunterId)
+FoxKills(foxId, hunterId, dogId)
