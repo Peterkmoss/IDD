@@ -150,7 +150,7 @@ begin
 	if  ((select id from member where id = new.id) is null
           and
          (select id from enemy where id = new.id) is null) 
-        then raise exception 'CheckPeople: You have to be either a member or an enemy';
+        then raise exception 'CheckPeople: You have to be either a member, enemy or both';
     end if;
 	return new;
 end;
