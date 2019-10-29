@@ -4,6 +4,7 @@ create table person (
     name    varchar(100)
 );
 
+
 drop table if exists dane cascade;
 create table dane (
     id          integer primary key references person(id),
