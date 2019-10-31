@@ -17,6 +17,3 @@ if __name__ == "__main__":
     pass
     #fd("Rentals", ["pid", "hid", "pn", "s", "hs", "hz", "hc"])
     #fd("Boats", ["bl", "bno", "z", "t", "bn", "ssn"])
-    #fd("Projects", ["id", "pid", "sid", "sn", "pn", "mid", "mn"])
-    #fd("Coffees", ["did", "hid", "cid", "dn", "ds", "cn", "cm"])
-    #fd("Customers", ["cid", "cn", "cs", "cnr", "cz", "cc", "eid"])
