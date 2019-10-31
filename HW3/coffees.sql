@@ -1,0 +1,420 @@
+SELECT 'did ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'did ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'did ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'did ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'did ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+
+SELECT 'did ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT did
+  FROM Coffees
+  GROUP BY did
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'hid ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'hid ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'hid ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'hid ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'hid ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+
+SELECT 'hid ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Coffees
+  GROUP BY hid
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'cid ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'cid ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'cid ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'cid ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'cid ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+
+SELECT 'cid ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cid
+  FROM Coffees
+  GROUP BY cid
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'dn ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'dn ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'dn ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'dn ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'dn ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+
+SELECT 'dn ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT dn
+  FROM Coffees
+  GROUP BY dn
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'ds ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'ds ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'ds ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'ds ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'ds ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+
+SELECT 'ds ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT ds
+  FROM Coffees
+  GROUP BY ds
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'cn ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'cn ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'cn ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'cn ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'cn ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'cn ---> cm' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cn
+  FROM Coffees
+  GROUP BY cn
+  HAVING COUNT(DISTINCT cm) > 1
+) X;
+
+SELECT 'cm ---> did' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT did) > 1
+) X;
+
+SELECT 'cm ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'cm ---> cid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT cid) > 1
+) X;
+
+SELECT 'cm ---> dn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT dn) > 1
+) X;
+
+SELECT 'cm ---> ds' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT ds) > 1
+) X;
+
+SELECT 'cm ---> cn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT cm
+  FROM Coffees
+  GROUP BY cm
+  HAVING COUNT(DISTINCT cn) > 1
+) X;
+

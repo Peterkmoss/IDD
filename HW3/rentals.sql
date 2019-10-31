@@ -1,0 +1,420 @@
+SELECT 'pid ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'pid ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 'pid ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'pid ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 'pid ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
+SELECT 'pid ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pid
+  FROM Rentals
+  GROUP BY pid
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 'hid ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 'hid ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 'hid ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'hid ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 'hid ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
+SELECT 'hid ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hid
+  FROM Rentals
+  GROUP BY hid
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 'pn ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 'pn ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'pn ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'pn ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 'pn ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
+SELECT 'pn ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT pn
+  FROM Rentals
+  GROUP BY pn
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 's ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 's ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 's ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 's ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 's ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
+SELECT 's ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT s
+  FROM Rentals
+  GROUP BY s
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 'hs ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 'hs ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'hs ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 'hs ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'hs ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
+SELECT 'hs ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hs
+  FROM Rentals
+  GROUP BY hs
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 'hz ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 'hz ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'hz ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 'hz ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'hz ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 'hz ---> hc' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hz
+  FROM Rentals
+  GROUP BY hz
+  HAVING COUNT(DISTINCT hc) > 1
+) X;
+
+SELECT 'hc ---> pid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT pid) > 1
+) X;
+
+SELECT 'hc ---> hid' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT hid) > 1
+) X;
+
+SELECT 'hc ---> pn' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT pn) > 1
+) X;
+
+SELECT 'hc ---> s' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT s) > 1
+) X;
+
+SELECT 'hc ---> hs' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT hs) > 1
+) X;
+
+SELECT 'hc ---> hz' AS FD,
+CASE WHEN COUNT(*)=0 THEN 'MAY HOLD'
+ELSE 'does not hold' END AS VALIDITY
+FROM (
+SELECT hc
+  FROM Rentals
+  GROUP BY hc
+  HAVING COUNT(DISTINCT hz) > 1
+) X;
+
