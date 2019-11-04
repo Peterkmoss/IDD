@@ -22,9 +22,8 @@ create table People (
 );
 
 insert into People(pid, pn)
-select pid, pn
-from Rentals
-group by pid, pn;
+select distinct pid, pn
+from Rentals;
 
 create table H2 (
     hz int primary key,
@@ -32,20 +31,18 @@ create table H2 (
 );
 
 insert into H2(hz, hc)
-select hz, hc
-from Rentals
-group by hz, hc;
+select distinct hz, hc
+from Rentals;
 
 create table H1 (
     hid int primary key,
     hs varchar(50) not null,
-    hz int references H2(hz)
+    hz int not null references H2(hz)
 );
 
 insert into H1(hid, hs, hz)
-select hid, hs, hz
-from Rentals
-group by hid, hs, hz;
+select distinct hid, hs, hz
+from Rentals;
 
 create table RentalsNew (
     pid int references People(pid),
@@ -55,9 +52,8 @@ create table RentalsNew (
 );
 
 insert into RentalsNew(pid, hid, s)
-select pid, hid, s
-from Rentals
-group by pid, hid, s;
+select distinct pid, hid, s
+from Rentals;
 
 --! The normal form for the new schema is BCNF
 
@@ -78,9 +74,8 @@ create table Zipcodes(
 );
 
 insert into Zipcodes(z, t)
-select z, t
-from Boats
-group by z, t;
+select distinct z, t
+from Boats;
 
 create table BoatsNew (
     bl char(2),
@@ -92,7 +87,7 @@ create table BoatsNew (
 );
 
 insert into BoatsNew(bl, bno, z, bn, ssn)
-select bl, bno, z, bn, ssn
+select distinct bl, bno, z, bn, ssn
 from Boats;
 
 --! The normal form for the new schema is 3NF
