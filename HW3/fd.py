@@ -13,7 +13,4 @@ def fd(relation, columns):
                 print(") X;")
                 print()
 
-if __name__ == "__main__":
-    pass
-    #fd("Rentals", ["pid", "hid", "pn", "s", "hs", "hz", "hc"])
-    #fd("Boats", ["bl", "bno", "z", "t", "bn", "ssn"])
+fd("Projects", ["id", "pid", "sid", "sn", "pn", "mid", "mn"])
