@@ -64,3 +64,5 @@ create table projectsnew (
 insert into projectsnew
 select distinct id, pid, sid
 from projects;
+
+-- All relations are in BCNF and therefore the schema is in BCNF.
