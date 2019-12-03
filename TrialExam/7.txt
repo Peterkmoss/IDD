@@ -1,0 +1,2 @@
+Cons: very slow to process that many entries, due to the relationships. Queries will take a long time to complete.
+Pros: very structured data, you can write queries to return exactly what you need.

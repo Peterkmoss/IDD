@@ -1,0 +1,12 @@
+R(A, B, C, D, E)
+AB -> CD
+A -> E
+C -> A
+ABC -> ADE
+
+R(A, B, C, D)
+AB -> CD
+C -> A
+
+R(A, E)
+A -> E

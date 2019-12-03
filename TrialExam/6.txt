@@ -1,0 +1,7 @@
+The consistency model used in the CAP theorem revolves around having the same data on all
+replicas of the distributed system, where as in ACID consistency is to not have different things
+happening due to simultaious transactions or that some integrity constraints are no longer satisfied.
+ACID is using locks and logs to prevent inconsistency from appearing within the system, 
+as well as constraints and triggers. 
+Consistency in CAP is maintaining consistency by replicating data to more nodes, 
+so if one of them crashes / goes offline the data is still there.
