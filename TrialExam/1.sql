@@ -13,9 +13,9 @@ where mo_percentage > 25
 
 --! Q3
 select count(distinct d_id)
-from gGarments
-where co_id is null
-  and d_id not in (select co_id from gGarments);
+from gGarments g
+where d_id not in (select d_id from gGarments g0 where g0.d_id = g.d_id and g0.co_id is not null)
+  and d_id not in (select co_id from gGarments g0 where g0.co_id = g.d_id);
 -- TODO
 
 --! Q4
